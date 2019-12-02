@@ -13,7 +13,7 @@ from peppa_utils.color_print import ColorPrint
 
 
 def banner():
-    banner_ = Figlet(font='slant')
+    banner_ = Figlet(font='smslant')
     print(banner_.renderText('Peppa-PHP-Scanner'))
     print("<---------WELCOME TO USE THIS PROGRAM--------->")
     print("<---------v1.0 - Author - nJcx86--------->")
