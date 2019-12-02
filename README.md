@@ -1,4 +1,4 @@
-# peppa_phpcode_scan
+# peppa_phpcode_scanner
 
 该项目是php代码审计辅助工具，用于定位高危函数，在函数附近生成注释，并在最后生成测试报告
 
