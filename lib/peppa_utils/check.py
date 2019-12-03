@@ -7,6 +7,7 @@
 import os
 import re
 from queue import Queue
+from rules.rules import datas
 
 
 def walk_php_file(dir_):
@@ -32,12 +33,42 @@ def match_comment(text):
         return None
 
 
+def check_line(text_):
+    tem_list = []
+    for item in datas:
+        pre_re_ = re.compile(item.get('re'))
+        item['re'] = pre_re_
+        tem_list.append(item)
+
+    for re_pattern in tem_list:
+
+        if re_pattern['re'].match(text_):
+            return True, re_pattern['info']
+
+    return False
+
+
+def read_line(dir_):
+    array2 = []
+    try:
+        with open(dir_) as lines:
+            array = lines.readlines()
+            for i in array:
+                i = i.strip('\n')
+                array2.append(i)
+        return array2
+    except Exception as e:
+        return array2
+
+
 def main():
     x, y = walk_php_file("/Users/njcx/project/peppa_phpcode_scanner/test")
-    print(x, y)
-    if match_comment(r"require 'front-office/public/index.html';"):
-        print("ok")
-
+    for file_ in y:
+        # print(y)
+        for line in read_line(file_):
+            # print(line)
+            if check_line(line):
+                print(line, check_line(line))
 
 if __name__ == '__main__':
     main()
